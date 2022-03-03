@@ -1,0 +1,10 @@
+﻿@page 
+@model IndexModel
+<form method="post">
+<label for="name">Название товара</label><br />
+<input type="text" name="name" /><br />
+<label for="price">Цена</label><br />
+<input type="number" name="price" /><br /><br />
+<input type="submit" value="Получить скидку" /><br />
+</form>
+<h3>@Model.MessageResult</h3>
