@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfRoutedEvent_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfRoutedEvent_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="350">
+    <Grid>
+        <TextBox x:Name="txtBox" Width="280"
+                 HorizontalAlignment="Center" Margin="0,10,0,0"  VerticalAlignment="Top" 
+                 TextWrapping="Wrap" FontSize="18"
+                 />
+        <StackPanel Height="85" Width="100"
+                    HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" 
+                    ButtonBase.Click="StackPanel_Click"
+                    >
+            <Button x:Name="butAdd" Content="x+x" FontSize="16"/>
+            <Button x:Name="butMult" Content="x*x" FontSize="16"/>
+            <Button x:Name="butSqrt" Content="√x" FontSize="16"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
