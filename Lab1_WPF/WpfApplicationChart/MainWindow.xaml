@@ -3,28 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplicationChart"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:WpfApplicationChart="clr-namespace:WpfApplicationChart"
-        
-        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
-        xmlns:chartingToolkit1="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid DataContext="{Binding Source={StaticResource model}}">
-        <chartingToolkit1:Chart >
-            <chartingToolkit1:Chart.Axes>
-                <chartingToolkit1:LinearAxis Title="Value"
-                    Orientation="Y" 
-                    Minimum="0" Maximum="50" 
-                    ShowGridLines="True" />
-            </chartingToolkit1:Chart.Axes>
-            <chartingToolkit1:ColumnSeries 
-                ItemsSource="{Binding Path=Data}"
-                DependentValuePath="Value" IndependentValuePath="Name" 
-            />
-        </chartingToolkit1:Chart>
-    </Grid>
-    
+        Title="Chart" Height="450" Width="800">
     <Window.Resources>
-        <WpfApplicationChart:Model x:Key="Model" />
+        <WpfApplicationChart:Model x:Key="model" />
     </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource model}}">
+        <chartingToolkit:Chart>
+            <chartingToolkit:ColumnSeries ItemsSource="{Binding Path=Data}"
+DependentValuePath="Value" IndependentValuePath="Name" />
+            <chartingToolkit:Chart.Axes>
+                <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="50" Title="Value" ShowGridLines="True" />
+                
+            </chartingToolkit:Chart.Axes>
+        </chartingToolkit:Chart>
+    </Grid>
 </Window>
