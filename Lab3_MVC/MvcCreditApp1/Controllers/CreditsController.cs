@@ -10,6 +10,7 @@ using MvcCreditApp1.Models;
 
 namespace MvcCreditApp1.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CreditsController : Controller
     {
         private CreditContext db = new CreditContext();

@@ -1,9 +1,12 @@
 ﻿@model WebMVCR1.Models.Person
 
 @{
-    ViewBag.Title = "Главная";
+    
+    ViewBag.Title = "Введите данные";
 }
 
+
+<div>
     @using (Html.BeginForm())
     {
         <table>
@@ -16,10 +19,9 @@
                 <td>@Html.TextBoxFor(x => x.LastName)</td>
             </tr>
             <tr>
-                <td>
-                    <input type="submit" value="Отправить" />
-                </td>
+                <td><input type="submit" value="Отправить" /> </td>
                 <td></td>
             </tr>
         </table>
     }
+</div>

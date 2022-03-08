@@ -1,4 +1,4 @@
-﻿using MvcCreditApp1.Models;
+using MvcCreditApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +18,9 @@ namespace MvcCreditApp1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             Database.SetInitializer(new CreditsDbInitializer());
+            Database.SetInitializer<ApplicationDbContext>(new AppDbInitializer());
         }
     }
 }

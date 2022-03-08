@@ -10,14 +10,14 @@ namespace MvcCreditApp1.Models
     public class Bid
     {
         // ID заявки
-        [Required]
+        
         public virtual int BidId { get; set; }
         // Имя заявителя
-        [Required]
+       
         [DisplayName("Имя заявителя")]
-        public virtual string Name { get; set; }
-        // Название кредита
         [Required]
+        public virtual string Name { get; set; }
+        // Название кредита public
         [DisplayName("Название кредита")]
         public virtual string CreditHead { get; set; }
         // Дата подачи заявки

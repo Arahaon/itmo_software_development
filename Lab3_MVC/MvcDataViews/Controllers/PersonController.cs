@@ -9,7 +9,7 @@ namespace MvcDataViews.Controllers
 {
     public class PersonController : Controller
     {
-        static readonly List<Person> people = new List<Person>();
+        static List<Person> people = new List<Person>();
 
         // GET: Person
         public ActionResult Index()
@@ -63,7 +63,6 @@ namespace MvcDataViews.Controllers
                     p.Email = pn.Email;
                 }
             }
-
             return View(p);
         }
 
@@ -86,6 +85,7 @@ namespace MvcDataViews.Controllers
                     pn.Email = p.Email;
                 }
             }
+
             return RedirectToAction("Index");
         }
 
@@ -104,7 +104,7 @@ namespace MvcDataViews.Controllers
                     p.Email = pn.Email;
                 }
             }
-            return View(p);
+            return RedirectToAction("Index");
         }
 
         // POST: Person/Delete/5

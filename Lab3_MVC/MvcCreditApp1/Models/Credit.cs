@@ -10,22 +10,19 @@ namespace MvcCreditApp1.Models
     public class Credit
     {
         // ID кредита
-        [Required]
         public virtual int CreditId { get; set; }
-        // Название
+        // Название 
+        [DisplayName("Название кредита")]
         [Required]
-        [DisplayName("Название")]
         public virtual string Head { get; set; }
         // Период, на который выдается кредит
-        [Required]
-        [DisplayName("Период выдачи")]
-        public virtual int Period { get; set; }
+        [DisplayName("Период кредита")]
+        public virtual int Period { get; set; } 
         // Максимальная сумма кредита
+        [DisplayName("Максимальная сумма кредита")]
         [Required]
-        [DisplayName("Максимальная сумма")]
         public virtual int Sum { get; set; }
         // Процентная ставка
-        [Required]
         [DisplayName("Процентная ставка")]
         public virtual int Procent { get; set; }
     }

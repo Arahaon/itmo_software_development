@@ -1,18 +1,18 @@
 ﻿@model MvcCreditApp1.Models.Bid
 
 @{
-    ViewBag.Title = "Редактировать заявку";
+    ViewBag.Title = "Редактировать";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Редактировать заявку</h2>
+<h2>Редактировать</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Bid</h4>
+        <h4>Заявка</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BidId)
@@ -50,5 +50,5 @@
 }
 
 <div>
-    @Html.ActionLink("Вернуться к списку", "Index")
+    @Html.ActionLink("Обратно к списку", "Index")
 </div>

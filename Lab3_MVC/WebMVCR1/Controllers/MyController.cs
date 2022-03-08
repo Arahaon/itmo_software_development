@@ -12,23 +12,7 @@ namespace WebMVCR1.Controllers
     {
         private static PersonRepository db = new PersonRepository();
 
-        
-        /*public ActionResult Start()
-        {
-            string res = ExeEnum();
-            res += "<br><br>" + ExeStruct();
-            res += "<br><br>" + StudyCsharp.SetStatus(3);
-            res += "<br><br>" + StudyCsharp.ExeSwitch(StudyCsharp.SetStatus(3));
-            res += "<br><br>" + StudyCsharp.GetFunction(0, 9);
-            res += "<br><br>" + ExeFactorial(5);
-            string res = ExeTriangle();
-            res += "<br><br>" + ExeCircle();
-            // res = ExePolim();
-            string res = ExeCollection();
-            return Content(res);
-        }*/
-
-        public ViewResult Start()
+        public ViewResult Index()
         {
             int hour = DateTime.Now.Hour;
             ViewBag.Greeting = hour < 12 ? "Доброе утро" : "Добрый день";
@@ -37,10 +21,7 @@ namespace WebMVCR1.Controllers
         }
 
         [HttpGet]
-        public ViewResult InputData()
-        {
-            return View();
-        }
+        public ViewResult InputData() { return View(); }
 
         [HttpPost]
         public ViewResult InputData(Person p)
@@ -56,20 +37,49 @@ namespace WebMVCR1.Controllers
             return View("ListPerson");
         }
 
-        public string Index(string hel)
+        /*public string Index(string hel)
         {
-            string Greeting = ModelClass.ModelHello() + ", " + hel;
-            return Greeting;
-        }
+            *//*string Greeting = ModelClass.ModelHello() + ", " + hel;
+            return Greeting;*/
+
+        /*string res = ExeEnum();
+        return res;*/
+
+        /*string res = ExeStruct();
+         return res;*/
+
+        /*string res = StudyCsharp.SetStatus(3);
+        return res;*/
+
+        /*string res = StudyCsharp.ExeSwitch(StudyCsharp.SetStatus(3));
+        return res;*/
+
+        /* string res = StudyCsharp.GetFunction(0, 9);
+         return res;*/
+
+        /*string res = ExeFactorial(5);
+        return res;*/
+
+        /*string res = ExeTriangle();
+        return res;*/
+
+        /*string res = ExeCircle();
+        return res;*/
+
+        /*string res = ExePolim();*//*
+
+        string res = ExeCollection();
+        return res;
+    }*/
+
+        public string Start() { int hour = DateTime.Now.Hour; string Greeting = hour < 12 ? "Доброе утро" : "Добрый день"; return Greeting; }
 
         public string ExeEnum()
         {
             AccountType goldAccount;
             AccountType platinumAccount;
-
             goldAccount = AccountType.Checking;
             platinumAccount = AccountType.Deposit;
-
             string res1 = String.Format("Тип банковского счета {0}", goldAccount);
             string res2 = String.Format("Тип банковского счета {0}", platinumAccount);
             string res = res1 + "<p>" + res2;
@@ -91,8 +101,7 @@ namespace WebMVCR1.Controllers
             int f;
             bool ok = StudyCsharp.Factorial(x, out f);
             if (ok)
-                return String.Format("Факториал числа {0} равен {1} ",
-                x, f);
+                return String.Format("Факториал числа {0} равен {1} ", x, f);
             else
                 return "Невозможно вычислить факториал";
         }
@@ -114,44 +123,18 @@ namespace WebMVCR1.Controllers
         public string ExePolim()
         {
             StringBuilder str = new StringBuilder();
-            Shape[] sh = {
-                new Triangle(1,2,3),
-                new Circle(5),
-                new Triangle(5,6,8)
-            };
-            foreach (Shape item in sh)
-            {
-                str.AppendFormat("Это фигура {0}", item.Name + "<p>");
-            }
+            Shape[] sh = { new Triangle(1, 2, 3), new Circle(5), new Triangle(5, 6, 8) };
+            foreach (Shape item in sh) { str.AppendFormat("Это фигура {0}", item.Name + "<p>"); }
             return str.ToString();
         }
 
         public string ExeCollection()
         {
-            var cirs = new List<Circle>
-            {
-                new Circle(12),
-                new Circle(5),
-                new Circle(15),
-                new Circle(6)
-            };
+            List<Shape> cirs = new List<Shape> { new Circle(12), new Circle(5), new Circle(15), new Circle(6), new Triangle(4, 5, 6), new Triangle(1, 2, 3) };
             cirs.Add(new Circle(7));
             cirs.Sort();
-            List<Triangle> triangles = new List<Triangle>
-            {
-                new Triangle(3, 4, 5),
-                new Triangle(6, 6, 6)
-            };
-            triangles.Sort();
             StringBuilder str = new StringBuilder();
-            foreach (Shape item in cirs)
-            {
-                str.AppendFormat("Это фигура {0}", item.Name + "<p>");
-            }
-            foreach (Shape item in triangles)
-            {
-                str.AppendFormat("Это фигура {0}", item.Name + "<p>");
-            }
+            foreach (Shape item in cirs) { str.AppendFormat("Это фигура {0}", item.Name + "<p>"); }
             return str.ToString();
         }
     }

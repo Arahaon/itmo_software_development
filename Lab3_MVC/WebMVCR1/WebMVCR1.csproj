@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{61240A73-99B0-46C6-ABEF-288C0F2FB524}</ProjectGuid>
+    <ProjectGuid>{D35FBB0C-ACCA-4E9C-8E3D-43DB9D34A94C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebMVCR1</RootNamespace>
     <AssemblyName>WebMVCR1</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -98,16 +98,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PersonRepository.cs" />
-    <Compile Include="Models\ModelClass.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\StudyCSharp.cs" />
+    <Compile Include="Models\ModelClass.cs" />
+    <Compile Include="Models\PersonRepository.cs" />
+    <Compile Include="Models\StudyCsharp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\My\Start.cshtml" />
+    <Content Include="Views\My\Index.cshtml" />
     <Content Include="Views\My\InputData.cshtml" />
     <Content Include="Views\My\Hello.cshtml" />
     <Content Include="Views\My\ListPerson.cshtml" />
@@ -137,9 +137,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64153</DevelopmentServerPort>
+          <DevelopmentServerPort>49705</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44337/</IISUrl>
+          <IISUrl>https://localhost:44394/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

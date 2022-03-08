@@ -1,14 +1,14 @@
 ﻿@model MvcCreditApp1.Models.Credit
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Подробнее";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Подробнее</h2>
 
 <div>
-    <h4>Credit</h4>
+    <h4>Кредит</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,6 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CreditId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.CreditId }) |
+    @Html.ActionLink("Обратно к списку", "Index")
 </p>
