@@ -2,11 +2,13 @@
 using Final.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -43,6 +45,51 @@ namespace Final.Controllers
         // GET: DepositAccounts
         public ActionResult SeeAll()
         {
+            return View("Index", db.DepositAccounts.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Transfer(int id)
+        {
+            ViewBag.OriginalId = id;
+            var currentUser = UserManager.FindById(User.Identity.GetUserId());
+            return View(db.DepositAccounts.Where(x => x.Owner == currentUser.UserName && x.Id != id).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Transfer(int originalId, int targetId, int value)
+        {
+            var originalDeposit = db.DepositAccounts.Where(x => x.Id == originalId).Single();
+            originalDeposit.Amount -= value;
+
+            var targetDeposit = db.DepositAccounts.Where(x => x.Id == targetId).Single();
+
+            var currencyState = JsonConvert.DeserializeAnonymousType(
+                new HttpClient().GetAsync("https://www.cbr-xml-daily.ru/daily_json.js").Result.Content.ReadAsStringAsync().Result,
+                new { Valute = new Dictionary<string, Curr>() });
+
+            if (originalDeposit.Currency == targetDeposit.Currency)
+            {
+                targetDeposit.Amount += value;
+            }
+            else if (originalDeposit.Currency == "RUB")
+            {
+                var ratio = currencyState.Valute[targetDeposit.Currency].Value;
+                targetDeposit.Amount += value/ratio;
+            }
+            else if (targetDeposit.Currency == "RUB")
+            {
+                var ratio = currencyState.Valute[originalDeposit.Currency].Value;
+                targetDeposit.Amount += ratio / value;
+            }
+            else
+            {
+                var ratio = currencyState.Valute[originalDeposit.Currency].Value / currencyState.Valute[targetDeposit.Currency].Value;
+                targetDeposit.Amount += value * ratio;
+            }
+
+            db.SaveChanges();
+
             return View("Index", db.DepositAccounts.ToList());
         }
 
@@ -150,9 +197,15 @@ namespace Final.Controllers
         {
             if (disposing)
             {
+                db.SaveChanges();
                 db.Dispose();
             }
             base.Dispose(disposing);
         }
+    }
+
+    class Curr
+    {
+        public decimal Value;
     }
 }

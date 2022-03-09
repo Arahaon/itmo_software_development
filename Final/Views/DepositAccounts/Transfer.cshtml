@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Final.Models.DepositAccount>
+
+@{
+    ViewBag.Title = "Transfer";
+}
+
+<h2>Transfer</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currency)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <tr>
+                <td>
+                    @Html.TextBox("value", 0) 
+                </td>
+                <td>
+                    <input hidden id="targetId" value="@item.Id" name = "targetId" />
+                    <input hidden id="originalId" value="@ViewBag.OriginalId" name = "originalId" />
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+                <td class="form-actions no-color">
+                    <input type="submit" value="Transfer" class="btn btn-default" />
+                </td>
+            </tr>
+
+        }
+
+
+    }
+
+</table>
+@Html.ActionLink("Back to List", "Index")

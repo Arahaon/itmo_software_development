@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Final.Data
 {
-    public class AppDbInit : DropCreateDatabaseAlways<AppDbContext>
+    public class AppDbInit : DropCreateDatabaseIfModelChanges<AppDbContext>
     {
         protected override void Seed(AppDbContext context)
         {
