@@ -22,21 +22,6 @@ namespace Final.Controllers
             return View(db.Currencies.ToList());
         }
 
-        // GET: Currencies/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Currency currency = db.Currencies.Find(id);
-            if (currency == null)
-            {
-                return HttpNotFound();
-            }
-            return View(currency);
-        }
-
         // GET: Currencies/Create
         public ActionResult Create()
         {

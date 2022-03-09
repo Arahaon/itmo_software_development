@@ -34,6 +34,7 @@ namespace Final.Controllers
         // GET: DepositAccounts
         public ActionResult Index()
         {
+            ViewBag.Role = UserManager.GetRoles(User.Identity.GetUserId()).First();
             var currentUser = UserManager.FindById(User.Identity.GetUserId());
             return View(db.DepositAccounts.Where(x => x.Owner == currentUser.UserName).ToList());
         }

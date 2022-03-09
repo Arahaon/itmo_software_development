@@ -6,7 +6,7 @@ namespace Final.Models
     public class DepositAccount
     {
         public int Id { get; set; }
-        
+        [Display(Name = "Owner of the deposit")]
         public string Owner { get; set; }
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }

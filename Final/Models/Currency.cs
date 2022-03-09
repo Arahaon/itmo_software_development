@@ -12,6 +12,7 @@ namespace Final.Models
 
         [Required]
         [RegularExpression("[a-zA-Z]+")]
+        [Display(Name = "Currency naming")]
         public string Name { get; set; }
     }
 }
